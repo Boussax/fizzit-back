@@ -31,6 +31,37 @@ app.get('/ferment/:id', (req: Request, res: Response) => {
 });
 
 
+app.post('/ferment', (req: Request, res: Response) => {
+    const newFerment : Ferment = {
+        id: ferments.length + 1,
+        name: req.body.name,
+        type : req.body.type ,
+        status: 'ongoing',
+        startDate : Date.now(),
+        fermentationDuration : 5,
+    };
+    ferments.push(newFerment);
+    res.status(201).json(newFerment);
+})
+
+app.put('/ferment/:id', (req: Request, res: Response) => {
+    const id = Number(req.params.id);
+    const index = ferments.findIndex(ferment => ferment.id === id);
+    if (index === -1) {
+        return res.status(404).send('Ferment not found')
+    }
+    const updatedFerment = {
+        id: ferments[index].id,
+        name: req.body.name,
+        type : req.body.type ,
+        status: req.body.status,
+        startDate : req.body.startDate,
+        fermentationDuration : req.body.fermentationDuration,
+    }
+    ferments[index] = updatedFerment
+    res.status(200).json('Ferment updated')
+})
+
 app.delete('/ferments/:id', (req, res) => {
     const id = Number(req.params.id)
     const index = ferments.findIndex(ferment => ferment.id === id)
