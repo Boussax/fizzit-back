@@ -30,6 +30,15 @@ app.get('/ferment/:id', (req: Request, res: Response) => {
     res.json(ferment)
 });
 
+app.get('/ferments/query', (req: Request, res: Response) => {
+    const type = (req.query.type as string).toLowerCase()
+    const ferments_result = ferments.filter(ferment => ferment.type.toLowerCase().includes(type))
+
+    if (ferments_result.length < 1) {
+        return res.status(200).send('No ferments matched your search')
+    }
+    res.json(ferments_result)
+})
 
 app.post('/ferment', (req: Request, res: Response) => {
     const newFerment : Ferment = {
