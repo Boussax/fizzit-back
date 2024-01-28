@@ -13,3 +13,7 @@ testing solution not chosen nor implemented yet
 - npm run start
 - npm run build
 - npm run test
+
+## deployment
+
+- after deployment, declare environement variables as described in .env.copy or include a .env file containing said variables
