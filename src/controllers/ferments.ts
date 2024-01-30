@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { FERMENTS } from "../mock/mock-ferments";
 import { Ferment } from "../models/ferment";
 import {
+  sql_delete_ferment,
   sql_get_all,
   sql_get_one,
 } from "../database/queries";
@@ -84,8 +85,8 @@ export const updateFerment = (req: Request, res: Response) => {
 };
 
 export const deleteFerment = (req: Request, res: Response) => {
-  const id = Number(req.params.id);
-  const index = ferments.findIndex((ferment) => ferment.id === id);
-  ferments.splice(index, 1);
-  res.status(200).json("Ferment deleted");
+  pool
+    .query(sql_delete_ferment, [req.params.id])
+    .then(() => res.status(200).json("Ferment deleted"))
+    .catch((error) => console.log(error));
 };
