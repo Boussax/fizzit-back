@@ -3,7 +3,7 @@ import {
   getFerments,
   getFerment,
   createFerment,
-  updateFerment,
+  // updateFerment,
   deleteFerment,
 } from "../controllers/ferments";
 export const router = Router();
@@ -14,6 +14,6 @@ router.get("/:id", getFerment);
 
 router.post("/", createFerment);
 
-router.put("/:id", updateFerment);
+// router.put("/:id", updateFerment);
 
 router.delete("/:id", deleteFerment);
