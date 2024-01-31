@@ -1,17 +1,16 @@
-import dotenv from "dotenv";
+import sanitizedConfig from "../config";
 import app from "./app";
 import { Pool } from "pg";
 import { sql_create } from "./database/queries";
 
-dotenv.config();
+const port: number = sanitizedConfig.PORT;
 
-const port = process.env.PORT || 3000;
 const pool = new Pool({
-  user: "postgres",
-  host: "localhost",
-  database: "fizzit_data",
-  password: "3L15@L3mm0",
-  port: 5432,
+  user: sanitizedConfig.PG_USERNAME,
+  host: sanitizedConfig.PG_HOSTNAME,
+  database: sanitizedConfig.PG_DBNAME,
+  password: sanitizedConfig.PG_PWD,
+  port: sanitizedConfig.PG_PORT,
 });
 console.log("[database] Connexion réussie à la base de données");
 

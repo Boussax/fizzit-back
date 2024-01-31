@@ -7,16 +7,18 @@ import {
   sql_get_one,
 } from "../database/queries";
 import { Pool } from "pg";
+import stabilizedConfig from "../../config";
 
-// const ferments = FERMENTS;
 const pool = new Pool({
-  user: "postgres",
-  host: "localhost",
-  database: "fizzit_data",
-  password: "3L15@L3mm0",
-  port: 5432,
+  user: stabilizedConfig.PG_USERNAME,
+  host: stabilizedConfig.PG_HOSTNAME,
+  database: stabilizedConfig.PG_DBNAME,
+  password: stabilizedConfig.PG_PWD,
+  port: stabilizedConfig.PG_PORT,
 });
+
 let fermentsCount: number = 0;
+
 export const getFerments = (req: Request, res: Response) => {
   pool
     .query(sql_get_all, [])
@@ -80,21 +82,6 @@ export const createFerment = (req: Request, res: Response) => {
       res.status(201).json(createdFerment);
     });
 };
-
-// export const updateFerment = (req: Request, res: Response) => {
-//   const id = Number(req.params.id);
-//   const index = ferments.findIndex((ferment) => ferment.id === id);
-//   const updatedFerment = {
-//     id: ferments[index].id,
-//     name: req.body.name,
-//     type: req.body.type,
-//     status: req.body.status,
-//     startDate: req.body.startDate,
-//     fermentationDuration: req.body.fermentationDuration,
-//   };
-//   ferments[index] = updatedFerment;
-//   res.status(200).json("Ferment updated");
-// };
 
 export const deleteFerment = (req: Request, res: Response) => {
   pool

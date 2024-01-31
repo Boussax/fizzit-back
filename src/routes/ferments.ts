@@ -6,6 +6,7 @@ import {
   // updateFerment,
   deleteFerment,
 } from "../controllers/ferments";
+
 export const router = Router();
 
 router.get("/", getFerments);
