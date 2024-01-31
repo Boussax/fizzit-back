@@ -1,7 +1,7 @@
 import sanitizedConfig from "../config";
 import app from "./app";
 import { Pool } from "pg";
-import { sql_create } from "./database/queries";
+import { sql_create_table } from "./database/queries";
 
 const port: number = sanitizedConfig.PORT;
 
@@ -14,8 +14,8 @@ const pool = new Pool({
 });
 console.log("[database] Connexion réussie à la base de données");
 
-pool.query(sql_create, []).catch((err) => {
-  console.error("error :", err);
+pool.query(sql_create_table, []).catch((err) => {
+  console.error("[database] error creating table:", err);
 });
 
 app.listen(port, () => {

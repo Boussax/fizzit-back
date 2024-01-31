@@ -17,7 +17,16 @@ const pool = new Pool({
   port: stabilizedConfig.PG_PORT,
 });
 
-let fermentsCount: number = 0;
+let maxId: number = 0;
+pool.query("SELECT MAX(ID) FROM Ferments").then((result) => {
+  maxId = Number(result.rows[0].max);
+});
+
+function updateMaxId(currentId: number) {
+  if (maxId < currentId) {
+    maxId = currentId;
+  }
+}
 
 export const getFerments = (req: Request, res: Response) => {
   pool
@@ -58,27 +67,25 @@ export const getFerment = (req: Request, res: Response) => {
 };
 
 export const createFerment = (req: Request, res: Response) => {
-  console.log(fermentsCount);
   pool
     .query(sql_create_new_ferment, [
-      fermentsCount + 1,
+      maxId + 1,
       req.body.name,
       req.body.type,
       "ongoing",
       req.body.startDate,
       req.body.fermentationDuration,
     ])
-    .then((result) => {
-      console.log(result);
+    .then(() => {
       const createdFerment: Ferment = {
-        id: fermentsCount + 1,
+        id: maxId + 1,
         name: req.body.name,
         type: req.body.type,
         status: "ongoing",
         startDate: req.body.startDate,
         fermentationDuration: req.body.fermentationDuration,
       };
-      fermentsCount++;
+      updateMaxId(maxId + 1);
       res.status(201).json(createdFerment);
     });
 };
