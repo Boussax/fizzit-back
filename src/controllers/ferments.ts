@@ -46,7 +46,9 @@ export const getFerments = (req: Request, res: Response) => {
       });
       res.json(ferments);
     })
-    .catch((error) => console.log(error));
+    .catch((error: Error) => {
+      console.error(error.stack);
+    });
 };
 
 export const getFerment = (req: Request, res: Response) => {
@@ -63,7 +65,9 @@ export const getFerment = (req: Request, res: Response) => {
       };
       res.json(ferment);
     })
-    .catch((error) => console.log(error));
+    .catch((error: Error) => {
+      console.error(error.stack);
+    });
 };
 
 export const createFerment = (req: Request, res: Response) => {
@@ -87,6 +91,9 @@ export const createFerment = (req: Request, res: Response) => {
       };
       updateMaxId(maxId + 1);
       res.status(201).json(createdFerment);
+    })
+    .catch((error: Error) => {
+      console.error(error.stack);
     });
 };
 
@@ -94,5 +101,7 @@ export const deleteFerment = (req: Request, res: Response) => {
   pool
     .query(sql_delete_ferment, [req.params.id])
     .then(() => res.status(200).json("Ferment deleted"))
-    .catch((error) => console.log(error));
+    .catch((error: Error) => {
+      console.error(error.stack);
+    });
 };
