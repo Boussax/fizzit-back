@@ -3,6 +3,6 @@ export type Ferment = {
   name: string;
   type: string;
   status: string;
-  startDate: number;
+  startDate: Date;
   fermentationDuration: number;
 };
