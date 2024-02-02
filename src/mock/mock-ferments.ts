@@ -6,7 +6,7 @@ export const FERMENTS: Ferment[] = [
     name: "Ginger Ale1",
     type: "Ginger Ale",
     status: "status",
-    startDate: Date.UTC(2021, 8, 2),
+    startDate: new Date(Date.UTC(2021, 8, 2)),
     fermentationDuration: 5,
   },
   {
@@ -14,7 +14,7 @@ export const FERMENTS: Ferment[] = [
     name: "Sauerkraut2",
     type: "Sauerkraut",
     status: "status",
-    startDate: Date.UTC(2021, 8, 2),
+    startDate: new Date(Date.UTC(2021, 8, 2)),
     fermentationDuration: 5,
   },
   {
@@ -22,7 +22,7 @@ export const FERMENTS: Ferment[] = [
     name: "Ginger Ale3",
     type: "Ginger Ale",
     status: "status",
-    startDate: Date.UTC(2021, 8, 2),
+    startDate: new Date(Date.UTC(2021, 8, 2)),
     fermentationDuration: 5,
   },
   {
@@ -30,7 +30,7 @@ export const FERMENTS: Ferment[] = [
     name: "Sauerkraut4",
     type: "Sauerkraut",
     status: "status",
-    startDate: Date.UTC(2021, 8, 2),
+    startDate: new Date(Date.UTC(2021, 8, 2)),
     fermentationDuration: 5,
   },
   {
@@ -38,7 +38,7 @@ export const FERMENTS: Ferment[] = [
     name: "Ginger Ale",
     type: "Ginger Ale",
     status: "status",
-    startDate: Date.UTC(2021, 8, 2),
+    startDate: new Date(Date.UTC(2021, 8, 2)),
     fermentationDuration: 5,
   },
   {
@@ -46,7 +46,7 @@ export const FERMENTS: Ferment[] = [
     name: "Sauerkraut",
     type: "Sauerkraut",
     status: "status",
-    startDate: Date.UTC(2021, 8, 2),
+    startDate: new Date(Date.UTC(2021, 8, 2)),
     fermentationDuration: 5,
   },
   {
@@ -54,7 +54,7 @@ export const FERMENTS: Ferment[] = [
     name: "Kimchi",
     type: "Kimchi",
     status: "status",
-    startDate: Date.UTC(2021, 8, 2),
+    startDate: new Date(Date.UTC(2021, 8, 2)),
     fermentationDuration: 10,
   },
   {
@@ -62,7 +62,7 @@ export const FERMENTS: Ferment[] = [
     name: "Sauerkraut",
     type: "Sauerkraut",
     status: "status",
-    startDate: Date.UTC(2021, 8, 2),
+    startDate: new Date(Date.UTC(2021, 8, 2)),
     fermentationDuration: 5,
   },
 ];

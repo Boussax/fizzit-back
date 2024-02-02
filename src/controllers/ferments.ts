@@ -24,7 +24,7 @@ export const createFerment = (req: Request, res: Response) => {
     name: req.body.name,
     type: req.body.type,
     status: "ongoing",
-    startDate: Date.now(),
+    startDate: new Date(),
     fermentationDuration: 5,
   };
   ferments.push(newFerment);

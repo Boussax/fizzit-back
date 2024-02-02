@@ -1,10 +1,8 @@
-import dotenv from "dotenv";
+import sanitizedConfig from "../config";
 import app from "./app";
 
-dotenv.config();
-
-const port = process.env.PORT || 3000;
+const port: number = sanitizedConfig.PORT;
 
 app.listen(port, () => {
-  console.log(`[server]: Server is running on port ${port}`);
+  console.log(`[server] Server is running on port ${port}`);
 });
